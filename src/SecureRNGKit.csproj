@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Copyright>Copyright (c) 2019-2024</Copyright>
+    <Company>AluminiumTech</Company>
+    <Authors>AlastairLundy</Authors>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/alastairlundy/SecureRNGKit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>A .NET Standard library for wrapping around .NET's RNGCryptoServiceProvider</Description>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>SecureRNGKit</PackageId>
+    <Owners>AluminiumTech</Owners>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Summary>A .NET Standard library for wrapping around .NET's RNGCryptoServiceProvider</Summary>
+    <Title>SecureRNGKit</Title>
+    <AssemblyVersion>2.5.0.4</AssemblyVersion>
+    <FileVersion>2.5.0.4</FileVersion>
+    <LangVersion>default</LangVersion>
+    <Version>2.5.0</Version>
+    <PackageVersion>2.5.0</PackageVersion>
+    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    <PackageReleaseNotes>### Changes from 2.5.0
+* Added initial support for targeting .NET Core 3.1, .NET 5, and .NET 6.
+* Added initial support for using System.Security.Cryptography.RandomNumberGenerator as a backend - In this release it is used on .NET 5.0 or later. In SecureRNGKit 2.6.0 it will become the default backend.
+* The RNGCryptoServiceProvider backend has been deprecated by Microsoft in .NET 6 - This backend will be removed in SecureRNGKit 2.6.0 and replaced with the System.Security.Cryptography.RandomNumberGenerator backend.
+* Reduced internal time limit from 2000 ms to 500ms.
+* Re-licensed under BSD 3 clause license from LGPLv2.1 - This is the final time this project will change licenses. The license was changed to allow greater flexibility in using the project without the hinderances of the LGPL.
+
+### Changes from 2.5.0 Beta 3
+* Changed default parameter value for the optional parameter for `NextDouble()` method.
+
+### Changes from 2.5.0 Beta 2
+* Improved robustness of variable checking in situations where the minimum and maximum parameter in methods is the same value
+* Disabled Console Writeline calls in main methods which were previously used for debugging
+* Removed unnecessary parameter on an internal method
+
+### Changes from 2.5.0 Beta 1
+* Implemented changes intended for 2.5.0 that were disabled in 2.4.x series
+* Removed `NextDouble(maximum)` method
+* Revamped what the `NextDouble(AllowNegativeNumbers = true)` method does - This brings it inline with type of output the non secure random class' method generates.
+* Fixed some issues with Random number generation taking too long</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SecureRNGKit.Test\**" />
+    <None Remove="SecureRNGKit-Cli\**" />
+    <None Include="../LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+    <None Remove="SecureRNGKit.Cli\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="SecureRNGKit.Test\**" />
+    <Compile Remove="SecureRNGKit-Cli\**" />
+    <Compile Remove="SecureRNGKit.Cli\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="SecureRNGKit.Test\**" />
+    <EmbeddedResource Remove="SecureRNGKit-Cli\**" />
+    <EmbeddedResource Remove="SecureRNGKit.Cli\**" />
+  </ItemGroup>
+
+</Project>
